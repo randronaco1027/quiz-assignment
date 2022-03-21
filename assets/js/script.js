@@ -1,5 +1,6 @@
 
 var timerEl = document.getElementById('timer');
+var timeInterval;
 
 document.getElementById("generate").addEventListener("click", countdown);
 document.getElementById("q1").style.display = "none";
@@ -96,7 +97,7 @@ function correctAnswer() {
 
 function gameOver() {
     //Needs to be defined
-    // clearInterval(timeInterval);
+    clearInterval(timeInterval);
     document.getElementById("countdown").textContent = "Game Over! Final score: " + timeLeft;
     document.getElementById("q1").style.display = "none";
     document.getElementById("q2").style.display = "none";
