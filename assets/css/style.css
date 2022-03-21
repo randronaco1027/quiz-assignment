@@ -9,7 +9,7 @@ header {
 }
 
 h1 {
-    padding-top: 20%;
+    padding-top: 5%;
 }
 
 h4 {
@@ -19,12 +19,6 @@ h4 {
 h3 {
     text-align: right;
 }
-
-/* .question {
-    text-align: center;
-    justify-content: center;
-    
-} */
 
 .start-button {
     text-align: center;
