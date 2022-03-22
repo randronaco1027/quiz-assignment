@@ -22,68 +22,66 @@ function countdown() {
             gameOver();
         }
     }, 1000);
+    displayQuestion();
 }
 
 var askQuestion = [{
     question: 'question 1',
-    answer1: 'a',
-    answer2: 'b',
-    answer3: 'c',
-    answer4: 'd',
-    correctAnswer: 'a'
+    answer1: 'a 1 - correct',
+    answer2: 'b 1',
+    answer3: 'c 1',
+    answer4: 'd 1',
+    correctAnswer: 'a 1 - correct'
 },
 {
     question: "question 2",
-    answer1: 'a',
-    answer2: 'b',
-    answer3: 'c',
-    answer4: 'd',
-    correctAnswer: 'b'
+    answer1: 'a 2',
+    answer2: 'b 2 - correct',
+    answer3: 'c 2',
+    answer4: 'd 2',
+    correctAnswer: 'b 2 - correct'
 },
 {
     question: "question 3",
-    answer1: 'a',
-    answer2: 'b',
-    answer3: 'c',
-    answer4: 'd',
-    correctAnswer: 'd'
+    answer1: 'a 3',
+    answer2: 'b 3',
+    answer3: 'c 3',
+    answer4: 'd 3 - correct',
+    correctAnswer: 'd 3 - correct'
 }]
 
-for (var i = 0; i < askQuestion.length; i++) {
-    //Load in questions using the questions[i] array
+var index = 0;
 
-    var container = document.querySelector(".container");
 
-    container.addEventListener("click", function (event) {
-        var element = event.target;
-        document.getElementById("answer1").style.display = "visible";
-        document.getElementById("answer2").style.display = "visible";
-        document.getElementById("answer3").style.display = "visible";
-        document.getElementById("answer4").style.display = "visible";
-        document.getElementById("answer1").textContent = askQuestion[i].answer1;
-        document.getElementById("answer2").textContent = askQuestion[i].answer2;
-        document.getElementById("answer3").textContent = askQuestion[i].answer3;
-        document.getElementById("answer4").textContent = askQuestion[i].answer4;
-        //Set datatype of currect answer to correct
 
-        if (element.matches(question[i].correctAnswer)) {
-            document.getElementById("checkAnswer").textContent = "Correct!"
-            var correctAnswerInterval = setInterval(function () {
-                document.getElementById("answer").textContent = ""
-            }, 1000)
-            console.log("Correct")
-        }
-        //show correct answer string and continue loop,
-        else {
-            timeLeft -= 10;
-            document.getElementById("checkAnswer").textContent = "Wrong!"
-            var wrongAnswerInterval = setInterval(function () {
-                document.getElementById("answer").textContent = ""
-            }, 1000)
-            console.log("Wrong")
-        }
-        //Else wrong answer and - 10 seconds
-    })
+function displayQuestion() {
+    document.getElementById("question").style.display = "block";
+    document.getElementById("answer1").style.display = "block";
+    document.getElementById("answer2").style.display = "block";
+    document.getElementById("answer3").style.display = "block";
+    document.getElementById("answer4").style.display = "block";
+    document.getElementById("question").textContent = askQuestion[index].question;
+    document.getElementById("answer1").textContent = askQuestion[index].answer1;
+    document.getElementById("answer2").textContent = askQuestion[index].answer2;
+    document.getElementById("answer3").textContent = askQuestion[index].answer3;
+    document.getElementById("answer4").textContent = askQuestion[index].answer4;
+    document.getElementById("answer1").addEventListener("click", checkAnswer)
+    document.getElementById("answer2").addEventListener("click", checkAnswer)
+    document.getElementById("answer3").addEventListener("click", checkAnswer)
+    document.getElementById("answer4").addEventListener("click", checkAnswer)
+}
+
+function checkAnswer(event) {
+    var element = event.target;
+    if (element.textContent === askQuestion[index].correctAnswer) {
+        console.log("correct");
+    }
+    else if (element.textContent !== askQuestion[index].correctAnswer) {
+        console.log("wrong")
+        timeLeft -= 10;
+    }
+    index++;
+    displayQuestion();
 }
 
 
@@ -105,7 +103,7 @@ function gameOver() {
 // function question1() {
 //     document.getElementById("generate").style.display = "none";
 //     document.getElementById("countdown").textContent = "Question 1";
-//     document.getElementById("q1").style.display = "block";
+//     document.getElementById("answer1").style.display = "block";
 //     document.getElementById("q1").textContent = "Correct Answer";
 //     document.getElementById("q1").addEventListener("click", question2);
 //     document.getElementById("q1").addEventListener("click", correctAnswer);
