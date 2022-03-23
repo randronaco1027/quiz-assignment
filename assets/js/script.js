@@ -111,14 +111,12 @@ function gameOver() {
     document.getElementById("submitButton").style.display = "block";
     document.getElementById("scoreLabel").textContent = "Enter Initials: ";
     document.getElementById("finalScoreName").textContent = "Enter Initials";
-    (saveScore)
 }
 
-function saveScore() {
-    document.getElementById("submitButton").addEventListener("click", function () {
-        localStorage.setItem("newScore", JSON.stringify(timeLeft));
-    })
-}
+
+document.getElementById("submitButton").addEventListener("click", function () {
+    localStorage.setItem("newScore", JSON.stringify(timeLeft));
+})
 
 function loadScore() {
     var savedScores = JSON.parse(localstorage.getitem(newScore));
