@@ -30,3 +30,15 @@ button {
     color: white;
     font-weight: bolder;
 }
+
+form {
+    display: inline-flex;
+}
+
+.scoreLabel {
+    padding: 5px;
+}
+
+header a {
+    text-align:left;
+}
