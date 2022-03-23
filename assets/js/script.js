@@ -26,28 +26,28 @@ function countdown() {
 }
 
 var askQuestion = [{
-    question: 'question 1',
-    answer1: 'a 1 - correct',
-    answer2: 'b 1',
-    answer3: 'c 1',
-    answer4: 'd 1',
-    correctAnswer: 'a 1 - correct'
+    question: 'String values must be enclosed within _______ when being assigned to variables.',
+    answer1: 'Commas',
+    answer2: 'Curly Brackets',
+    answer3: 'Quotes',
+    answer4: 'Parenthesis',
+    correctAnswer: 'Quotes'
 },
 {
-    question: "question 2",
-    answer1: 'a 2',
-    answer2: 'b 2 - correct',
-    answer3: 'c 2',
-    answer4: 'd 2',
-    correctAnswer: 'b 2 - correct'
+    question: "Arrays in JavaScript can be used to store _______.",
+    answer1: 'Numbers and Strings',
+    answer2: 'Other Arrays',
+    answer3: 'Booleans',
+    answer4: 'All of the Above',
+    correctAnswer: 'All of the Above'
 },
 {
-    question: "question 3",
-    answer1: 'a 3',
-    answer2: 'b 3',
-    answer3: 'c 3',
-    answer4: 'd 3 - correct',
-    correctAnswer: 'd 3 - correct'
+    question: "The condition in an if/else statement is enclosed with ______.",
+    answer1: 'Quotes',
+    answer2: 'Curly Brackets',
+    answer3: 'Parenthesis',
+    answer4: 'Square Brackets',
+    correctAnswer: 'Parenthesis'
 }]
 
 var index = 0;
@@ -116,13 +116,20 @@ function gameOver() {
 }
 
 function saveScore() {
-    document.getElementById("highScore").submit();
-    localStorage.setItem("timeLeft", JSON.stringify(timeLeft));
+    document.getElementById("highScore").addEventListener("click", function () {
+        localStorage.setItem("newScore", JSON.stringify(timeLeft));
+        updateLS();
+        //Need to add score to array using push??
+    })
 }
 
-function loadScore () {
-    var savedScores = localStorage.getItem("timeLeft");
-    savedScores = JSON.parse(savedScores);
-    console.log(savedScores)
+function updateLS () {
+    var scores = [], keys = Object.keys(localStorage), i = keys.length;
+    while (i--) {values.push(localStorage.getItem(keys[i]));}
+    document.getElementById("displayHighScore").textContent = scores;
+}
+
+function loadScore() {
+    var savedScores = JSON.parse(localstorage.getitem(newScore));
     document.getElementById("displayHighScore").textContent = savedScores;
 }
