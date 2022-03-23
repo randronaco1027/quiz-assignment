@@ -15,13 +15,13 @@
             <a href="./highscore.html">Scoreboard</a>
             <h3 id="timer" class="timer">Time Remaining</h3>
         </div>
-        <h1>Code Quiz</h1>
+        <h1 id="codeQuiz">Code Quiz</h1>
         <p id="question" class="question"></p>
         <h2 id="countdown"> </h2>
         <form id="highScore" action="./highscore.html">
             <label id="scoreLabel" class="scoreLabel"></label>
             <input id="finalScoreName" type="text" placeholder="initials" class="submit"></input>
-            <input type="button" onclick="saveScore()" value="Submit" id="submitButton">
+            <input type="button" onclick="saveScore(), window.location = 'highscore.html'" value="Submit" id="submitButton">
         </form>
         </form>
     </header>

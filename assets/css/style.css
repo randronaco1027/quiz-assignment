@@ -23,7 +23,7 @@ body {
     text-align: center;
 }
 
-button {
+button, .button {
     background-color:blueviolet;
     padding: 20px;
     color: white;

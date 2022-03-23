@@ -52,9 +52,8 @@ var askQuestion = [{
 
 var index = 0;
 
-
-
 function displayQuestion() {
+    document.getElementById("codeQuiz").style.display = "none";
     document.getElementById("generate").style.display = "none";
     document.getElementById("question").style.display = "block";
     document.getElementById("answer1").style.display = "block";
@@ -119,7 +118,7 @@ function saveScore() {
     document.getElementById("highScore").addEventListener("click", function () {
         localStorage.setItem("newScore", JSON.stringify(timeLeft));
         updateLS();
-        //Need to add score to array using push??
+
     })
 }
 
@@ -132,4 +131,9 @@ function updateLS () {
 function loadScore() {
     var savedScores = JSON.parse(localstorage.getitem(newScore));
     document.getElementById("displayHighScore").textContent = savedScores;
+}
+
+function clearScores() {
+    localStorage.clear()
+    updateLS;
 }
