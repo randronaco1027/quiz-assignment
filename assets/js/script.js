@@ -115,17 +115,9 @@ function gameOver() {
 }
 
 function saveScore() {
-    document.getElementById("highScore").addEventListener("click", function () {
+    document.getElementById("submitButton").addEventListener("click", function () {
         localStorage.setItem("newScore", JSON.stringify(timeLeft));
-        updateLS();
-
     })
-}
-
-function updateLS () {
-    var scores = [], keys = Object.keys(localStorage), i = keys.length;
-    while (i--) {values.push(localStorage.getItem(keys[i]));}
-    document.getElementById("displayHighScore").textContent = scores;
 }
 
 function loadScore() {
@@ -135,5 +127,4 @@ function loadScore() {
 
 function clearScores() {
     localStorage.clear()
-    updateLS;
 }
