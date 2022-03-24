@@ -1,7 +1,5 @@
-
 var timerEl = document.getElementById('timer');
 var timeInterval;
-var initials;
 
 document.getElementById("generate").addEventListener("click", countdown);
 document.getElementById("answer1").style.display = "none";
@@ -51,8 +49,6 @@ var askQuestion = [{
     correctAnswer: 'Parenthesis'
 }]
 
-var index = 0;
-
 function displayQuestion() {
     document.getElementById("codeQuiz").style.display = "none";
     document.getElementById("generate").style.display = "none";
@@ -73,6 +69,7 @@ function displayQuestion() {
 
 }
 
+var index = 0;
 function checkAnswer(event) {
     var element = event.target;
     if (element.textContent === askQuestion[index].correctAnswer) {
@@ -98,8 +95,6 @@ function checkAnswer(event) {
         gameOver()
     }
 }
-
-
 
 function gameOver() {
     clearInterval(timeInterval);
@@ -128,12 +123,6 @@ document.getElementById("submitButton").addEventListener("click", function () {
     var storedInitials = JSON.parse(localStorage.getItem("newInitials")) ||[]
     storedInitials.push(initials);
     localStorage.setItem("newInitials", JSON.stringify(storedInitials))
-
-    // var storedCombined = JSON.parse(localStorage.getItem("combined")) ||[]
-    // var combined = storedInitials.concat(storedScores)
-    // storedCombined.push(combined);
-    // localStorage.setItem("combined", JSON).stringify(storedCombined)
-
 })
 
 
