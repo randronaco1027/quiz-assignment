@@ -1,6 +1,7 @@
 var timerEl = document.getElementById('timer');
 var timeInterval;
 
+//Initial properties to hide content
 document.getElementById("generate").addEventListener("click", countdown);
 document.getElementById("answer1").style.display = "none";
 document.getElementById("answer2").style.display = "none";
@@ -9,6 +10,7 @@ document.getElementById("answer4").style.display = "none";
 document.getElementById("finalScoreName").style.display = "none";
 document.getElementById("submitButton").style.display = "none";
 
+//Start timer
 var timeLeft = 50;
 function countdown() {
     timeInterval = setInterval(function () {
@@ -24,6 +26,7 @@ function countdown() {
     displayQuestion();
 }
 
+//Array of all the questions and answers
 var askQuestion = [{
     question: 'String values must be enclosed within _______ when being assigned to variables.',
     answer1: 'Commas',
@@ -49,6 +52,7 @@ var askQuestion = [{
     correctAnswer: 'Parenthesis'
 }]
 
+//Function to display make Question contents visible
 function displayQuestion() {
     document.getElementById("codeQuiz").style.display = "none";
     document.getElementById("generate").style.display = "none";
@@ -69,6 +73,7 @@ function displayQuestion() {
 
 }
 
+// Check if the answer is correct, subtract 10 seconds if wrong
 var index = 0;
 function checkAnswer(event) {
     var element = event.target;
@@ -96,6 +101,7 @@ function checkAnswer(event) {
     }
 }
 
+//Display final score and form to submit final score
 function gameOver() {
     clearInterval(timeInterval);
     document.getElementById("countdown").textContent = "Game Over! Final score: " + timeLeft;
@@ -112,15 +118,16 @@ function gameOver() {
 
 }
 
+//Store scores and initials to local storage
 document.getElementById("submitButton").addEventListener("click", function () {
-    
-    var storedScores = JSON.parse(localStorage.getItem("newScore"))||[]
+
+    var storedScores = JSON.parse(localStorage.getItem("newScore")) || []
     storedScores.push(timeLeft); //timeLeft is the final score
     localStorage.setItem("newScore", JSON.stringify(storedScores));
 
     var initials = document.getElementById("finalScoreName").value;
-    
-    var storedInitials = JSON.parse(localStorage.getItem("newInitials")) ||[]
+
+    var storedInitials = JSON.parse(localStorage.getItem("newInitials")) || []
     storedInitials.push(initials);
     localStorage.setItem("newInitials", JSON.stringify(storedInitials))
 })
