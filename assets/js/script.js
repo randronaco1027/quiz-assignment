@@ -1,7 +1,7 @@
 
 var timerEl = document.getElementById('timer');
 var timeInterval;
-var scoresArray = [];
+var initials;
 
 document.getElementById("generate").addEventListener("click", countdown);
 document.getElementById("answer1").style.display = "none";
@@ -118,17 +118,26 @@ function gameOver() {
 }
 
 document.getElementById("submitButton").addEventListener("click", function () {
-    var storedScores = JSON.parse(localStorage.getItem("newScore"));
-    storedScores.push(timeLeft); //timeLeft is the final score
     
-    //Error for this line shows up for split second "Uncaught TypeError: Cannot read properties of null (reading 'push') at HTMLInputElement.<anonymous> (script.js.123.18)"
+    var storedScores = JSON.parse(localStorage.getItem("newScore"))||[]
+    storedScores.push(timeLeft); //timeLeft is the final score
     localStorage.setItem("newScore", JSON.stringify(storedScores));
+
+    var initials = document.getElementById("finalScoreName").value;
+    
+    var storedInitials = JSON.parse(localStorage.getItem("newInitials")) ||[]
+    storedInitials.push(initials);
+    localStorage.setItem("newInitials", JSON.stringify(storedInitials))
+
+    // var storedCombined = JSON.parse(localStorage.getItem("combined")) ||[]
+    // var combined = storedInitials.concat(storedScores)
+    // storedCombined.push(combined);
+    // localStorage.setItem("combined", JSON).stringify(storedCombined)
+
 })
 
 
 
 
-// document.getElementById("clearScores").addEventListener("click", function () {
-//     localStorage.clear()
-// })
+
 
