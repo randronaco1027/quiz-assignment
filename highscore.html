@@ -11,7 +11,14 @@
 
 <body>
     <h1>High Scores: </h1>
-    <p id="displayHighScore"></p>
-    <button>Clear Scores</button>
+    <p id="displayHighScore">
+    </p>
+    <button id="clearScores">Clear Scores</button>
     <input type="button" onclick="window.location = 'index.html';" value="Return" class="button"></button>
+
+    <script>
+        document.getElementById("displayHighScore").textContent = JSON.parse(localStorage.getItem("newScore"));
+    </script>
 </body>
+
+</html>

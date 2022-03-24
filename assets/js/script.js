@@ -1,6 +1,7 @@
 
 var timerEl = document.getElementById('timer');
 var timeInterval;
+var scoresArray = [];
 
 document.getElementById("generate").addEventListener("click", countdown);
 document.getElementById("answer1").style.display = "none";
@@ -69,6 +70,7 @@ function displayQuestion() {
     document.getElementById("answer2").addEventListener("click", checkAnswer)
     document.getElementById("answer3").addEventListener("click", checkAnswer)
     document.getElementById("answer4").addEventListener("click", checkAnswer)
+
 }
 
 function checkAnswer(event) {
@@ -97,6 +99,8 @@ function checkAnswer(event) {
     }
 }
 
+
+
 function gameOver() {
     clearInterval(timeInterval);
     document.getElementById("countdown").textContent = "Game Over! Final score: " + timeLeft;
@@ -106,23 +110,25 @@ function gameOver() {
     document.getElementById("answer3").style.display = "none";
     document.getElementById("answer4").style.display = "none";
     timerEl.textContent = "";
-    console.log(timeLeft);
     document.getElementById("finalScoreName").style.display = "block";
     document.getElementById("submitButton").style.display = "block";
     document.getElementById("scoreLabel").textContent = "Enter Initials: ";
     document.getElementById("finalScoreName").textContent = "Enter Initials";
-}
 
+}
 
 document.getElementById("submitButton").addEventListener("click", function () {
-    localStorage.setItem("newScore", JSON.stringify(timeLeft));
+    var storedScores = JSON.parse(localStorage.getItem("newScore"));
+    storedScores.push(timeLeft); //timeLeft is the final score
+    
+    //Error for this line shows up for split second "Uncaught TypeError: Cannot read properties of null (reading 'push') at HTMLInputElement.<anonymous> (script.js.123.18)"
+    localStorage.setItem("newScore", JSON.stringify(storedScores));
 })
 
-function loadScore() {
-    var savedScores = JSON.parse(localstorage.getitem(newScore));
-    document.getElementById("displayHighScore").textContent = savedScores;
-}
 
-function clearScores() {
-    localStorage.clear()
-}
+
+
+// document.getElementById("clearScores").addEventListener("click", function () {
+//     localStorage.clear()
+// })
+
