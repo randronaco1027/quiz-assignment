@@ -22,7 +22,7 @@ After the questions are all done, the user's final score is displayed and they a
 
 After entering their initials the user is taken to the high scores page where the highest score is displayed with the appropriate initials
 
-The high score is saved and viewable any time by clicking the high scores link in the top left of the home screen
+The high score is saved and viewable any time by clicking the Scoreboard link in the top left of the home screen
 
 The user then has the option to return to the home screen as well as the ability to clear scores
 
